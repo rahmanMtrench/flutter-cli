@@ -1,4 +1,4 @@
-<!--
+
 ---
 
 # Flutter Feature and Model Generator CLI
@@ -18,8 +18,7 @@ A command-line tool to help you quickly generate features and models for your Fl
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-repo/flutter-cli-tool.git
-cd flutter-cli-tool
+dart pub global activate flutter_cli
 ```
 
 ## Usage
@@ -29,13 +28,13 @@ cd flutter-cli-tool
 This command initializes the project with the `core` and `config` directories and creates a `main.dart` file.
 
 ```bash
-dart cli.dart --init
+flutter_cli --init
 ```
 
 Example:
 
 ```bash
-dart cli.dart --init
+flutter_cli --init
 ```
 
 ### 2. Create a Feature
@@ -43,7 +42,7 @@ dart cli.dart --init
 To generate a new feature, use the `--feature` (or `-f`) flag. The feature name will be converted to PascalCase for internal usage and snake_case for folder names.
 
 ```bash
-dart cli.dart --feature "hello world"
+flutter_cli --feature "hello world"
 ```
 
 - This creates a feature named `HelloWorld` in the `lib/features/hello_world` folder with the following structure:
@@ -64,13 +63,13 @@ To generate a model, you can provide JSON data or the path to a JSON file using 
 Example 1: Create a `User` model from JSON data:
 
 ```bash
-dart cli.dart --model User --json '{"id": 1, "name": "John", "email": "john@example.com"}'
+flutter_cli --model User --json ./path/to/user.json
 ```
 
 Example 2: Create a `Profile` model from a JSON file and place it inside a specific feature folder:
 
 ```bash
-dart cli.dart --model Profile --json ./path/to/user.json --featureModel profile
+flutter_cli --model Profile --json ./path/to/user.json --featureModel profile
 ```
 
 ### 4. Help
@@ -78,7 +77,7 @@ dart cli.dart --model Profile --json ./path/to/user.json --featureModel profile
 To see a list of available commands and options:
 
 ```bash
-dart cli.dart --help
+flutter_cli --help
 ```
 
 ---
@@ -178,97 +177,4 @@ class User {
 
 [MIT License](LICENSE)
 
---- -->
-
-
-# Flutter Feature and Model Generator CLI
-
-A Dart CLI tool to streamline feature and model generation for Flutter applications using Bloc and GoRouter.
-
-## Features
-
-- **Project Initialization**: Set up core directories with a single command.
-- **Feature Generation**: Quickly create a feature with Bloc, pages, widgets, and models.
-- **Model Creation**: Generate Dart models from JSON data or files.
-- **Route Management**: Automatically add routes to `routes.dart`.
-
-## Installation
-
-Add the tool globally via pub.dev:
-
-```bash
-dart pub global activate flutter_cli_tool
-```
-
-## Usage
-
-### 1. Initialize a Flutter Project
-
-```bash
-dart run flutter_cli_tool --init
-```
-
-### 2. Create a Feature
-
-```bash
-dart run flutter_cli_tool --feature "hello world"
-```
-
-This creates a feature in the `lib/features/hello_world` folder with Bloc, pages, and models.
-
-### 3. Create a Model from JSON
-
-Generate a model from JSON data or file:
-
-```bash
-dart run flutter_cli_tool --model User --json ./user.json --featureModel profile
-```
-
-This will generate the `User` model inside `lib/features/profile/models/`.
-
-## Example Model Output
-
-```dart
-class User {
-  final int id;
-  final String name;
-  final String email;
-
-  User({required this.id, required this.name, required this.email});
-
-  User copyWith({int? id, String? name, String? email}) {
-    return User(id: id ?? this.id, name: name ?? this.name, email: email ?? this.email);
-  }
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(id: json['id'], name: json['name'], email: json['email']);
-  }
-
-  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'email': email};
-
-  @override
-  String toString() => 'User(id: $id, name: $name, email: $email)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    return other is User && other.id == id && other.name == name && other.email == email;
-  }
-
-  @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
-}
-```
-
-## Help Command
-
-```bash
-dart run flutter_cli_tool --help
-```
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ---
-
