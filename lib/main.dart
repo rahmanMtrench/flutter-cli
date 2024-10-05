@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'features/setting/bloc/setting_bloc.dart';
-import 'features/profile/bloc/profile_bloc.dart';
+import 'features/test_user/bloc/test_user_bloc.dart';
 
 import 'features/home/bloc/home_bloc.dart';
 import 'config/routes.dart';
@@ -20,11 +19,8 @@ const MyApp({super.key});
                 BlocProvider<HomeBloc>(
           create: (context) => HomeBloc(),
         ),
-                BlocProvider<ProfileBloc>(
-          create: (context) => ProfileBloc(),
-        ),
-                BlocProvider<SettingBloc>(
-          create: (context) => SettingBloc(),
+                BlocProvider<TestUserBloc>(
+          create: (context) => TestUserBloc(),
         ),
         // BlocProviders will be inserted here dynamically
       ],

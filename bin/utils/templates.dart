@@ -39,12 +39,12 @@ const MyApp({super.key});
 }
 
 // BLoC Template
-String blocTemplate(String featureName) {
+String blocTemplate(String featureName, String folderName) {
   return '''
 import 'package:bloc/bloc.dart';
 
-part '${featureName}_event.dart';
-part '${featureName}_state.dart';
+part '${folderName}_event.dart';
+part '${folderName}_state.dart';
 
 class ${featureName.capitalize()}Bloc extends Bloc<${featureName.capitalize()}Event, ${featureName.capitalize()}State> {
   ${featureName.capitalize()}Bloc() : super(${featureName.capitalize()}Initial()) {
@@ -57,9 +57,9 @@ class ${featureName.capitalize()}Bloc extends Bloc<${featureName.capitalize()}Ev
 }
 
 // Event Template
-String eventTemplate(String featureName) {
+String eventTemplate(String featureName, String folderName) {
   return '''
-part of '${featureName}_bloc.dart';
+part of '${folderName}_bloc.dart';
 abstract class ${featureName.capitalize()}Event {}
 
 class ${featureName.capitalize()}Started extends ${featureName.capitalize()}Event {}
@@ -67,9 +67,9 @@ class ${featureName.capitalize()}Started extends ${featureName.capitalize()}Even
 }
 
 // State Template
-String stateTemplate(String featureName) {
+String stateTemplate(String featureName, String folderName) {
   return '''
-part of '${featureName}_bloc.dart';
+part of '${folderName}_bloc.dart';
 abstract class ${featureName.capitalize()}State {}
 
 class ${featureName.capitalize()}Initial extends ${featureName.capitalize()}State {}
@@ -115,38 +115,6 @@ GoRouter createRouter() {
 ''';
 }
 
-
-// String modelTemplate(String modelName, Map<String, dynamic> jsonContent) {
-//   final fields = jsonContent.keys.map((key) {
-//     final type = _getDartType(jsonContent[key]);
-//     return '  final $type $key;';
-//   }).join('\n');
-
-//   final constructorParams =
-//       jsonContent.keys.map((key) => 'required this.$key').join(', ');
-
-//   return '''
-// class ${modelName.capitalize()} {
-// $fields
-
-//   ${modelName.capitalize()}({
-//     $constructorParams
-//   });
-
-//   factory ${modelName.capitalize()}.fromJson(Map<String, dynamic> json) {
-//     return ${modelName.capitalize()}(
-//       ${jsonContent.keys.map((key) => '$key: json[\'$key\']').join(',\n      ')}
-//     );
-//   }
-
-//   Map<String, dynamic> toJson() {
-//     return {
-//       ${jsonContent.keys.map((key) => '\'$key\': $key').join(',\n      ')}
-//     };
-//   }
-// }
-// ''';
-// }
 
 
 String modelTemplate(String modelName, Map<String, dynamic> jsonContent) {
@@ -241,3 +209,35 @@ String _getDartType(dynamic value) {
     return 'String';
   }
 }
+
+// String modelTemplate(String modelName, Map<String, dynamic> jsonContent) {
+//   final fields = jsonContent.keys.map((key) {
+//     final type = _getDartType(jsonContent[key]);
+//     return '  final $type $key;';
+//   }).join('\n');
+
+//   final constructorParams =
+//       jsonContent.keys.map((key) => 'required this.$key').join(', ');
+
+//   return '''
+// class ${modelName.capitalize()} {
+// $fields
+
+//   ${modelName.capitalize()}({
+//     $constructorParams
+//   });
+
+//   factory ${modelName.capitalize()}.fromJson(Map<String, dynamic> json) {
+//     return ${modelName.capitalize()}(
+//       ${jsonContent.keys.map((key) => '$key: json[\'$key\']').join(',\n      ')}
+//     );
+//   }
+
+//   Map<String, dynamic> toJson() {
+//     return {
+//       ${jsonContent.keys.map((key) => '\'$key\': $key').join(',\n      ')}
+//     };
+//   }
+// }
+// ''';
+// }
