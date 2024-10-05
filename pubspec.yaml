@@ -1,4 +1,4 @@
-name: flutter_cli
+name: flutter_cli_tool
 description: A Dart CLI tool to generate features and models for Flutter apps (currently works with bloc and go router).
 
 homepage: https://github.com/rahmanMtrench/flutter-cli
@@ -11,7 +11,7 @@ environment:
 
 
 executables:
-  flutter_cli: flutter_cli_tool
+  flutter_cli_tool: flutter_cli_tool
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
