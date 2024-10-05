@@ -1,4 +1,3 @@
-Here’s a sample `README.md` documentation for your CLI tool, explaining its usage with examples:
 
 ---
 
@@ -180,5 +179,3 @@ class User {
 [MIT License](LICENSE)
 
 ---
-
-This `README.md` provides instructions on how to use your CLI tool, including examples of each command and how it works.
