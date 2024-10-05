@@ -38,7 +38,7 @@ flutter_cli_tool --init
   |__ config/routes.dart
   |__ core/
   └── features/
-      └── hello_world/
+      └── home/
           ├── bloc/
           ├── pages/
           ├── widgets/
