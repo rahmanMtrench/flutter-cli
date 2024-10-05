@@ -1,120 +1,3 @@
-// // BLoC Template
-// import 'helpers.dart';
-
-
-
-// String mainTemplate() {
-//   return '''
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:go_router/go_router.dart';
-// import 'features/home/bloc/home_bloc.dart';
-// import 'routes.dart'; // Assuming this file will have the GoRouter configuration
-
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-// const MyApp({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiBlocProvider(
-//       providers: [
-//         BlocProvider<HomeBloc>(
-//           create: (context) => HomeBloc(),
-//         ),
-//         // Add other Blocs here as needed
-//       ],
-//       child: MaterialApp.router(
-//         title: 'Flutter Demo',
-//         theme: ThemeData(
-//           primarySwatch: Colors.blue,
-//         ),
-//         routerDelegate: createRouter().routerDelegate,
-//         routeInformationParser: createRouter().routeInformationParser,
-//       ),
-//     );
-//   }
-// }
-// ''';
-// }
-
-// String blocTemplate(String featureName) {
-//   return '''
-// import 'package:bloc/bloc.dart';
-
-// part '${featureName}_event.dart';
-// part '${featureName}_state.dart';
-
-// class ${featureName.capitalize()}Bloc extends Bloc<${featureName.capitalize()}Event, ${featureName.capitalize()}State> {
-//   ${featureName.capitalize()}Bloc() : super(${featureName.capitalize()}Initial()){
-//     on<${featureName.capitalize()}Event>((event, emit) {
-//       // TODO: implement event handler
-//     });
-//   }
-// }
-// ''';
-// }
-
-// // Event Template
-// String eventTemplate(String featureName) {
-//   return '''
-// part of '${featureName}_bloc.dart';
-// abstract class ${featureName.capitalize()}Event {}
-
-// class ${featureName.capitalize()}Started extends ${featureName.capitalize()}Event {}
-// ''';
-// }
-
-// // State Template
-// String stateTemplate(String featureName) {
-//   return '''
-// part of '${featureName}_bloc.dart';
-// abstract class ${featureName.capitalize()}State {}
-
-// class ${featureName.capitalize()}Initial extends ${featureName.capitalize()}State {}
-// ''';
-// }
-
-// // Page Template
-// String pageTemplate(String featureName) {
-//   return '''
-// import 'package:flutter/material.dart';
-
-// class ${featureName.capitalize()}Page extends StatelessWidget {
-//  const ${featureName.capitalize()}Page({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('${featureName.capitalize()} Page')),
-//       body: const Center(
-//         child: Text('Welcome to the $featureName page!'),
-//       ),
-//     );
-//   }
-// }
-// ''';
-// }
-
-
-
-// // Route template for the initial file setup
-// String routeTemplate() {
-//   return '''
-// import 'package:go_router/go_router.dart';
-// import 'package:flutter/material.dart';
-
-
-// GoRouter createRouter() {
-//   return GoRouter(
-//     routes: [
-//       // Routes
-//     ],
-//   );
-// }
-// ''';
-// }
 
 
 import 'helpers.dart';
@@ -126,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'features/home/bloc/home_bloc.dart';
-import 'routes.dart';
+import 'config/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -218,10 +101,12 @@ const ${featureName.capitalize()}Page({super.key});
 String routeTemplate() {
   return '''
 import 'package:go_router/go_router.dart';
-import 'package:flutter/material.dart';
+// DO NOT REMOVE THIS COMENT
+// Page Imports
 
 GoRouter createRouter() {
   return GoRouter(
+   initialLocation: '/home',
     routes: [
       // Routes will be added here dynamically
     ],

@@ -1,4 +1,4 @@
-
+<!--
 ---
 
 # Flutter Feature and Model Generator CLI
@@ -178,4 +178,97 @@ class User {
 
 [MIT License](LICENSE)
 
+--- -->
+
+
+# Flutter Feature and Model Generator CLI
+
+A Dart CLI tool to streamline feature and model generation for Flutter applications using Bloc and GoRouter.
+
+## Features
+
+- **Project Initialization**: Set up core directories with a single command.
+- **Feature Generation**: Quickly create a feature with Bloc, pages, widgets, and models.
+- **Model Creation**: Generate Dart models from JSON data or files.
+- **Route Management**: Automatically add routes to `routes.dart`.
+
+## Installation
+
+Add the tool globally via pub.dev:
+
+```bash
+dart pub global activate flutter_cli_tool
+```
+
+## Usage
+
+### 1. Initialize a Flutter Project
+
+```bash
+dart run flutter_cli_tool --init
+```
+
+### 2. Create a Feature
+
+```bash
+dart run flutter_cli_tool --feature "hello world"
+```
+
+This creates a feature in the `lib/features/hello_world` folder with Bloc, pages, and models.
+
+### 3. Create a Model from JSON
+
+Generate a model from JSON data or file:
+
+```bash
+dart run flutter_cli_tool --model User --json ./user.json --featureModel profile
+```
+
+This will generate the `User` model inside `lib/features/profile/models/`.
+
+## Example Model Output
+
+```dart
+class User {
+  final int id;
+  final String name;
+  final String email;
+
+  User({required this.id, required this.name, required this.email});
+
+  User copyWith({int? id, String? name, String? email}) {
+    return User(id: id ?? this.id, name: name ?? this.name, email: email ?? this.email);
+  }
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(id: json['id'], name: json['name'], email: json['email']);
+  }
+
+  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'email': email};
+
+  @override
+  String toString() => 'User(id: $id, name: $name, email: $email)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is User && other.id == id && other.name == name && other.email == email;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
+}
+```
+
+## Help Command
+
+```bash
+dart run flutter_cli_tool --help
+```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 ---
+

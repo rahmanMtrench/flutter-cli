@@ -60,14 +60,15 @@ void addRouteToRouter(String featureName) {
       "import '../features/$featureName/pages/${featureName}_page.dart';";
   final newRoute = """
       GoRoute(
+      name:'${featureName.capitalize()}',
         path: '/$featureName',
         builder: (context, state) => const ${featureName.capitalize()}Page(),
       ),""";
 
   if (!existingContent.contains(importStatement)) {
     existingContent = existingContent.replaceFirst(
-        "import 'package:flutter/material.dart';",
-        "import 'package:flutter/material.dart';\n$importStatement");
+        "// Page Imports",
+        "$importStatement \n // Page Imports");
   }
 
   if (!existingContent.contains(newRoute.trim())) {
