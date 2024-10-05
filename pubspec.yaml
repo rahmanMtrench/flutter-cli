@@ -1,9 +1,9 @@
-name: flutter_cli_tool
+name: flutter_cli
 description: A Dart CLI tool to generate features and models for Flutter apps (currently works with bloc and go router).
 
 homepage: https://github.com/rahmanMtrench/flutter-cli
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 
 environment:
