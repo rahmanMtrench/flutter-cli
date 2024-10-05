@@ -18,7 +18,7 @@ A command-line tool to help you quickly generate features and models for your Fl
 Clone the repository:
 
 ```bash
-dart pub global activate flutter_cli
+dart pub global activate flutter_cli_tool
 ```
 
 ## Usage
@@ -28,13 +28,13 @@ dart pub global activate flutter_cli
 This command initializes the project with the `core` and `config` directories and creates a `main.dart` file.
 
 ```bash
-flutter_cli --init
+flutter_cli_tool --init
 ```
 
 Example:
 
 ```bash
-flutter_cli --init
+flutter_cli_tool --init
 ```
 
 ### 2. Create a Feature
@@ -42,7 +42,7 @@ flutter_cli --init
 To generate a new feature, use the `--feature` (or `-f`) flag. The feature name will be converted to PascalCase for internal usage and snake_case for folder names.
 
 ```bash
-flutter_cli --feature "hello world"
+flutter_cli_tool --feature "hello world"
 ```
 
 - This creates a feature named `HelloWorld` in the `lib/features/hello_world` folder with the following structure:
@@ -63,13 +63,13 @@ To generate a model, you can provide JSON data or the path to a JSON file using 
 Example 1: Create a `User` model from JSON data:
 
 ```bash
-flutter_cli --model User --json ./path/to/user.json
+flutter_cli_tool_tool --model User --json ./path/to/user.json
 ```
 
 Example 2: Create a `Profile` model from a JSON file and place it inside a specific feature folder:
 
 ```bash
-flutter_cli --model Profile --json ./path/to/user.json --featureModel profile
+flutter_cli_tool_tool --model Profile --json ./path/to/user.json --featureModel profile
 ```
 
 ### 4. Help
@@ -77,7 +77,7 @@ flutter_cli --model Profile --json ./path/to/user.json --featureModel profile
 To see a list of available commands and options:
 
 ```bash
-flutter_cli --help
+flutter_cli_tool_tool --help
 ```
 
 ---
