@@ -27,16 +27,24 @@ dart pub global activate flutter_cli_tool
 
 This command initializes the project with the `core` and `config` directories and creates a `main.dart` file.
 
-```bash
-flutter_cli_tool --init
-```
 
-Example:
 
 ```bash
 flutter_cli_tool --init
 ```
-
+- This creates a feature named `home` in the `lib/features/home` folder with the following structure:
+  ```
+  lib/
+  |__ config/routes.dart
+  |__ core/
+  └── features/
+      └── hello_world/
+          ├── bloc/
+          ├── pages/
+          ├── widgets/
+          └── models/
+  main.dart
+  ```
 ### 2. Create a Feature
 
 To generate a new feature, use the `--feature` (or `-f`) flag. The feature name will be converted to PascalCase for internal usage and snake_case for folder names.
